@@ -8,6 +8,10 @@ fun main() {
 fun tryLambdaFunction() {
     val sumLambda: (Int, Int, Int) -> Int = { i1: Int, i2: Int, i3: Int -> i1 + i2 + i3 }
     println(sumLambda(1, 2, 3))
+
+    val arr: ArrayList<Int> = arrayListOf(1, 3, 2, 4, 3, 4, 1)
+    val maxIndex = arr.indexOf(arr.maxOrNull() ?: 0)
+    println(maxIndex)
 }
 
 fun tryHigherOrderFunction() {

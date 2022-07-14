@@ -116,20 +116,20 @@ Nếu channel đã close nhưng vẫn cố gắng send thì sẽ throw ClosedRec
 * Buffer Channel -> buffer = capacity = 4 thì mới bị suspend
 * */
 
-//fun main() = runBlocking {
-//    val channel = Channel<Int>(capacity = 4) // tạo ra 1 buffered channel với capacity = 4
-//    val sender = launch {
-//        // launch 1 coroutine để send data
-//        repeat(10) { // send 10 data
-//            channel.send(it) // hàm send sẽ bị suspend khi buffer is full
-//            println("Sending $it") // in ra sau khi send
-//        }
-//    }
-//
-//    // cố ý ko nhận data để xem thằng send có bị suspend ko
-//    delay(1000)
-//    sender.cancel() // cancel sender coroutine
-//}
+fun main() = runBlocking {
+    val channel = Channel<Int>(capacity = 4) // tạo ra 1 buffered channel với capacity = 4
+    val sender = launch {
+        // launch 1 coroutine để send data
+        repeat(10) { // send 10 data
+            channel.send(it) // hàm send sẽ bị suspend khi buffer is full
+            println("Sending $it") // in ra sau khi send
+        }
+    }
+
+    // cố ý ko nhận data để xem thằng send có bị suspend ko
+    delay(3000)
+    sender.cancel() // cancel sender coroutine
+}
 
 /*
 Conflated channel Là 1 buffered channel nhưng capacity chỉ bằng 1.
@@ -158,19 +158,19 @@ Tức là lúc nào trong channel cũng chỉ có tối đa 1 giá trị mà th�
 *  Vì là List nên nó lưu trữ vô hạn, tất nhiên khi hết memory để lưu trữ thì nó sẽ throw OutOfMemoryException.
 * */
 
-fun main() = runBlocking {
-    val channel = Channel<Int>(Channel.UNLIMITED)
-    val sender = launch {
-        repeat(7) { // send 7 data
-            channel.send(it)
-        }
-    }
-    delay(1000)
-    // cố tình delay 1s để coroutine receiver ko thể receive value. Xem coroutine sender có bị suspend ko?
-
-    repeat(7) { // nhận 7 data
-        val value = channel.receive()
-        println("number $value")
-    }
-    sender.cancel() // cancel sender coroutine
-}
+//fun main() = runBlocking {
+//    val channel = Channel<Int>(Channel.UNLIMITED)
+//    val sender = launch {
+//        repeat(7) { // send 7 data
+//            channel.send(it)
+//        }
+//    }
+//    delay(1000)
+//    // cố tình delay 1s để coroutine receiver ko thể receive value. Xem coroutine sender có bị suspend ko?
+//
+//    repeat(7) { // nhận 7 data
+//        val value = channel.receive()
+//        println("number $value")
+//    }
+//    sender.cancel() // cancel sender coroutine
+//}
