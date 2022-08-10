@@ -197,15 +197,15 @@ fun main() = runBlocking {
         println("Caught $exception")
     }
     supervisorScope {
-        val first = launch(handler) {
+        launch(handler) {
             println("Child throws an exception")
             throw AssertionError()
         }
-        val second = launch(handler) {
+        launch(handler) {
             delay(100)
             throw AssertionError()
         }
-        val third = launch(handler) {
+        launch(handler) {
             delay(100)
             println("Scope is completing")
         }

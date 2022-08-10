@@ -27,7 +27,7 @@ suspend fun printTwo(): Int {
 //    println("Completed in $time ms")
 //}
 
-/*Không dùng async và await -> chạy song song*/
+/*Dùng async và await -> chạy song song*/
 
 //fun com.example.myapplication.coroutines.main() = runBlocking {
 //    val time = measureTimeMillis {

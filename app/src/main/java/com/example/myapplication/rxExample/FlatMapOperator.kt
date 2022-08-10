@@ -8,11 +8,11 @@ fun main() {
     val observable = listOf(10, 9, 8, 7, 6, 5, 4, 3, 2, 1).toObservable()
 
     observable.flatMap { number ->
-        Observable.create<String> {//(1)
+        Observable.create<String> {
             it.onNext("The Number $number")
             it.onNext("number/2: ${number / 2}")
             it.onNext("number%2: ${number % 2}")
-            it.onComplete()//(2)
+            it.onComplete()
         }
     }.subscribeBy(
         onNext = { item ->
@@ -20,6 +20,9 @@ fun main() {
         },
         onComplete = {
             println("Complete")
+        },
+        onError = {
+
         }
     )
 }
