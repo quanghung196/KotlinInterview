@@ -3,8 +3,8 @@ package com.example.myapplication.algorithms
 var waterLevel: Int = 0
 
 fun main() {
-    val listBrick1: ArrayList<Int> = arrayListOf(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 0)
-    val listBrick2: ArrayList<Int> = arrayListOf()
+    val listBrick1 = arrayListOf(0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1, 0)
+    val listBrick2 = arrayListOf<Int>()
 
     val splitListBrick: (ArrayList<Int>, ArrayList<Int>) -> Unit =
         { lb1: ArrayList<Int>, lb2: ArrayList<Int> ->

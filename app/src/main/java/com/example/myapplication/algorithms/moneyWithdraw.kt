@@ -4,9 +4,9 @@ import java.util.concurrent.ConcurrentHashMap
 import kotlin.system.measureTimeMillis
 
 var solutionCount = 0
-val allResult: ConcurrentHashMap<String, ArrayList<Int>> = ConcurrentHashMap()
-val allStep: ConcurrentHashMap<String, String> = ConcurrentHashMap()
-val moneyWithdrawSteps: ArrayList<String> = ArrayList()
+val allResult = ConcurrentHashMap<String, ArrayList<Int>>()
+val allStep = ConcurrentHashMap<String, String>()
+val moneyWithdrawSteps = arrayListOf<String>()
 
 fun main() {
     val listOfMoney = arrayListOf(1, 2, 5)
